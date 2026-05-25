@@ -65,14 +65,8 @@ cd gucompaper_docker
 ```bash
 make run
 ```
-
-That target is defined in the Makefile as:
-
-```bash
-docker compose -f docker-compose-collab.yml up -d
-```
-
 What happens:
+- Under the hood, this runs `docker compose -f docker-compose-collab.yml up -d`
 
 - `docker compose` reads `.env` to resolve `${HUB_IMAGE_NAME}` → `shijiegu7/spyglass-hub-Gu2026` and `${DB_IMAGE_NAME}` → `shijiegu7/spyglass-db-Gu2026`.
 - Because these images are not yet on your machine, Docker pulls them from Docker Hub. (First time only; subsequent runs reuse the local copies.)
