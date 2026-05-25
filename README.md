@@ -40,6 +40,7 @@ All of these are stored in [.env](.env). Do **not** edit that file.
 You do **not** need a Docker Hub account or `docker login` — the published images are public.
 
 ## Files you need
+All four are in this repo; just follow the **Step-by-step** below.
 
 Put all four of the following in the same directory:
 
@@ -50,7 +51,7 @@ Put all four of the following in the same directory:
 | `Makefile` | Provides the `make run` shortcut |
 | `config/mysqld.cnf` | MySQL server config (bind-mounted into the db container) |
 
-All four are committed to this repo; just `git clone` and `cd` in.
+
 
 ## Step-by-step
 
