@@ -20,17 +20,6 @@ Both images live on Docker Hub:
 
 You do **not** need to install Python, conda, MySQL, or any paper dependency — everything is inside the images. You do not need a Docker Hub account or docker login — the published images are public.
 
-## Passwords and credentials
-
-| What | Value | When you'll need it |
-| --- | --- | --- |
-| JupyterLab login password | `Gu2026` | When the browser prompts you at `http://localhost:8888/lab` |
-| MySQL root password | `tutorial` | Already wired into the notebooks via `.env`; only needed if you manually shell into the db container |
-| MySQL user | `root` | Same — already used automatically by DataJoint inside the hub container |
-| MySQL host (inside Docker network) | `db` | Automatic; the hub container resolves this internally |
-| MySQL host port (from your laptop) | `localhost:3306` | Only if you want to connect to the db with an external MySQL client |
-
-All of these are stored in [.env](.env). Do **not** edit that file.
 
 ## Prerequisites
 
@@ -119,3 +108,15 @@ Common issues:
 
 - **Port 8888 or 3306 already in use** on your host. Stop the conflicting process or edit the port mappings in `docker-compose-collab.yml`.
 - **First `make run` is slow.** Pulling ~several GB from Docker Hub takes time. Subsequent runs are immediate.
+
+## Appendix: Passwords and credentials
+
+| What | Value | When you'll need it |
+| --- | --- | --- |
+| JupyterLab login password | `Gu2026` | When the browser prompts you at `http://localhost:8888/lab` |
+| MySQL root password | `tutorial` | Already wired into the notebooks via `.env`; only needed if you manually shell into the db container |
+| MySQL user | `root` | Same — already used automatically by DataJoint inside the hub container |
+| MySQL host (inside Docker network) | `db` | Automatic; the hub container resolves this internally |
+| MySQL host port (from your laptop) | `localhost:3306` | Only if you want to connect to the db with an external MySQL client |
+
+All of these are stored in [.env](.env). Do **not** edit that file.
