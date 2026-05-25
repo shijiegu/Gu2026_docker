@@ -18,7 +18,7 @@ Both images live on Docker Hub:
 
 **What you will not do**
 
-You do **not** need to install Python, conda, MySQL, or any paper dependency — everything is inside the images.
+You do **not** need to install Python, conda, MySQL, or any paper dependency — everything is inside the images. You do not need a Docker Hub account or docker login — the published images are public.
 
 ## Passwords and credentials
 
