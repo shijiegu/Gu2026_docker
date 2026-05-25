@@ -5,6 +5,7 @@ Instructions for running the **Gu, Chen, Gillespie et al., 2026** paper analysis
 ## High-level overview
 
 **What you will run**
+
 Two containers, started together via `docker compose`:
 
 - `collab_hub` — JupyterLab on host port **8888**, with the notebooks, the `gucompaper` source, and the full conda environment baked in.
@@ -16,6 +17,7 @@ Both images live on Docker Hub:
 - `shijiegu7/spyglass-db-Gu2026:latest`
 
 **What you will not do**
+
 You do **not** need to install Python, conda, MySQL, or any paper dependency — everything is inside the images.
 
 ## Passwords and credentials
