@@ -42,8 +42,6 @@ You do **not** need a Docker Hub account or `docker login` — the published ima
 ## Files you need
 All four are in this repo; just follow the **Step-by-step** below.
 
-Put all four of the following in the same directory:
-
 | File | Purpose |
 | --- | --- |
 | `.env` | Environment variables: image names, MySQL credentials, Jupyter password |
