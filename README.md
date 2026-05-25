@@ -2,8 +2,9 @@
 
 Instructions for running the **Gu, Chen, Gillespie et al., 2026** paper analysis notebooks in a Docker container, using pre-built images published to Docker Hub. The analysis [code](https://github.com/shijiegu/Gu2026), dependencies, and the machinery needed to pull data from the associated data in the cloud [**Dandi Set**](https://dandiarchive.org/dandiset/001836) are all packaged in the Docker image. Once you get the Docker running, everything is included. This is the one-stop shop for the instructions to set up Docker containers.
 
-## What you will run
+## High-level overview
 
+**What you will run**
 Two containers, started together via `docker compose`:
 
 - `collab_hub` — JupyterLab on host port **8888**, with the notebooks, the `gucompaper` source, and the full conda environment baked in.
@@ -14,6 +15,7 @@ Both images live on Docker Hub:
 - `shijiegu7/spyglass-hub-Gu2026:latest`
 - `shijiegu7/spyglass-db-Gu2026:latest`
 
+**What you will not do**
 You do **not** need to install Python, conda, MySQL, or any paper dependency — everything is inside the images.
 
 ## Passwords and credentials
