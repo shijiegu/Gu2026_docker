@@ -1,0 +1,34 @@
+services:
+  hub:
+    container_name: collab_hub
+    env_file: .env
+    image: "${HUB_IMAGE_NAME}"
+    ports:
+      - "8888:8888"
+    volumes:
+      - conda:/opt/conda
+      - notebooks:/home/joyvan/notebooks
+    depends_on:
+      - db
+
+  db:
+    container_name: collab_db
+    image: "${DB_IMAGE_NAME}"
+    env_file: .env
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./config/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+      - db_data:/var/lib/mysql
+    restart:
+      on-failure
+
+networks:
+  spyglass_network:
+    name: spyglass_net
+
+volumes: # Docker managed mappings.
+  conda: # Saves time declaring env
+  notebooks: # Saves user notebook edits
+  db_data: # Allows persistent db data
+
