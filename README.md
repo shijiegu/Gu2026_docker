@@ -1,6 +1,6 @@
 # gucompaper_docker
 
-Instructions for running the **Gu2026** paper notebooks in a Docker container, using pre-built images published to Docker Hub.
+Instructions for running the **Gu, Chen, Gillespie et al., 2026** paper analysis notebooks in a Docker container, using pre-built images published to Docker Hub. Code are at [**Gu2026**](https://github.com/shijiegu/Gu2026).
 
 ## What you will run
 
