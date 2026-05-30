@@ -11,8 +11,8 @@ Two containers, started together via `docker compose`:
 
 Both images live on Docker Hub:
 
-- `shijiegu7/spyglass-hub-Gu2026:latest`
-- `shijiegu7/spyglass-db-Gu2026:latest`
+- `shijiegu7/spyglass-hub-gu2026:latest`
+- `shijiegu7/spyglass-db-gu2026:latest`
 
 You do **not** need to install Python, conda, MySQL, or any paper dependency — everything is inside the images.
 
@@ -71,7 +71,7 @@ docker compose -f docker-compose-collab.yml up -d
 
 What happens:
 
-- `docker compose` reads `.env` to resolve `${HUB_IMAGE_NAME}` → `shijiegu7/spyglass-hub-Gu2026` and `${DB_IMAGE_NAME}` → `shijiegu7/spyglass-db-Gu2026`.
+- `docker compose` reads `.env` to resolve `${HUB_IMAGE_NAME}` → `shijiegu7/spyglass-hub-gu2026` and `${DB_IMAGE_NAME}` → `shijiegu7/spyglass-db-gu2026`.
 - Because these images are not yet on your machine, Docker pulls them from Docker Hub. (First time only; subsequent runs reuse the local copies.)
 - Docker starts `collab_hub` and `collab_db` containers and creates three named volumes the first time: `conda`, `notebooks`, `db_data`. The `notebooks` volume is seeded from `/home/joyvan/notebooks` inside the hub image, so you start with the paper's notebooks. Your edits in subsequent sessions persist in that volume.
 - The hub container connects to the db container via the internal hostname `db` (from `MYSQL_HOST=db` in `.env`) using `MYSQL_ROOT_PASSWORD=tutorial`.
