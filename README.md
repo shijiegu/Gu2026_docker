@@ -1,8 +1,12 @@
 # gucompaper_docker
 
-Instructions for running the **Gu2026** paper notebooks in a Docker container, using pre-built images published to Docker Hub.
+Instructions for running the **Gu, Liu, Gillespie et al., 2026** paper analysis notebooks in a Docker container, using pre-built images published to Docker Hub. The analysis [code](https://github.com/shijiegu/Gu2026), dependencies, and the machinery needed to pull data from the associated data in the cloud [Dandi Set](https://dandiarchive.org/dandiset/001836) are all packaged in the Docker image. Once you get the Docker running, everything is included. This is the one-stop shop for the instructions to set up Docker containers.
 
-## What you will run
+**DOI**: https://zenodo.org/records/20371929
+
+## High-level overview
+
+**What you will run**
 
 Two containers, started together via `docker compose`:
 
@@ -14,19 +18,10 @@ Both images live on Docker Hub:
 - `shijiegu7/spyglass-hub-gu2026:latest`
 - `shijiegu7/spyglass-db-gu2026:latest`
 
-You do **not** need to install Python, conda, MySQL, or any paper dependency — everything is inside the images.
+**What you will not do**
 
-## Passwords and credentials
+You do **not** need to install Python, conda, MySQL, or any paper dependency — everything is inside the images. You do not need a Docker Hub account or docker login — the published images are public.
 
-| What | Value | When you'll need it |
-| --- | --- | --- |
-| JupyterLab login password | `Gu2026` | When the browser prompts you at `http://localhost:8888/lab` |
-| MySQL root password | `tutorial` | Already wired into the notebooks via `.env`; only needed if you manually shell into the db container |
-| MySQL user | `root` | Same — already used automatically by DataJoint inside the hub container |
-| MySQL host (inside Docker network) | `db` | Automatic; the hub container resolves this internally |
-| MySQL host port (from your laptop) | `localhost:3306` | Only if you want to connect to the db with an external MySQL client |
-
-All of these are stored in [.env](.env). Do **not** edit that file.
 
 ## Prerequisites
 
@@ -36,8 +31,7 @@ All of these are stored in [.env](.env). Do **not** edit that file.
 You do **not** need a Docker Hub account or `docker login` — the published images are public.
 
 ## Files you need
-
-Put all four of the following in the same directory:
+All four are in this repo; just follow the **Step-by-step** below.
 
 | File | Purpose |
 | --- | --- |
@@ -46,7 +40,7 @@ Put all four of the following in the same directory:
 | `Makefile` | Provides the `make run` shortcut |
 | `config/mysqld.cnf` | MySQL server config (bind-mounted into the db container) |
 
-All four are committed to this repo; just `git clone` and `cd` in.
+
 
 ## Step-by-step
 
@@ -62,14 +56,8 @@ cd gucompaper_docker
 ```bash
 make run
 ```
-
-That target is defined in the Makefile as:
-
-```bash
-docker compose -f docker-compose-collab.yml up -d
-```
-
 What happens:
+- Under the hood, this runs `docker compose -f docker-compose-collab.yml up -d`
 
 - `docker compose` reads `.env` to resolve `${HUB_IMAGE_NAME}` → `shijiegu7/spyglass-hub-gu2026` and `${DB_IMAGE_NAME}` → `shijiegu7/spyglass-db-gu2026`.
 - Because these images are not yet on your machine, Docker pulls them from Docker Hub. (First time only; subsequent runs reuse the local copies.)
@@ -122,3 +110,15 @@ Common issues:
 
 - **Port 8888 or 3306 already in use** on your host. Stop the conflicting process or edit the port mappings in `docker-compose-collab.yml`.
 - **First `make run` is slow.** Pulling ~several GB from Docker Hub takes time. Subsequent runs are immediate.
+
+## Appendix: Passwords and credentials
+
+| What | Value | When you'll need it |
+| --- | --- | --- |
+| JupyterLab login password | `Gu2026` | When the browser prompts you at `http://localhost:8888/lab` |
+| MySQL root password | `tutorial` | Already wired into the notebooks via `.env`; only needed if you manually shell into the db container |
+| MySQL user | `root` | Same — already used automatically by DataJoint inside the hub container |
+| MySQL host (inside Docker network) | `db` | Automatic; the hub container resolves this internally |
+| MySQL host port (from your laptop) | `localhost:3306` | Only if you want to connect to the db with an external MySQL client |
+
+All of these are stored in [.env](.env). Do **not** edit that file.
