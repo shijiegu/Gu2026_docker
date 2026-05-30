@@ -2,7 +2,6 @@
 
 Instructions for running the [**Gu, Liu, Gillespie et al., 2026**](https://www.biorxiv.org/content/10.64898/2026.05.26.727951v1) paper analysis notebooks in a Docker container, using pre-built images published to Docker Hub. The analysis [code](https://github.com/shijiegu/Gu2026), dependencies, and the machinery needed to pull data from the associated data in the cloud [Dandi Set](https://dandiarchive.org/dandiset/001836) are all packaged in the Docker image. Once you get the Docker running, everything is included. This is the one-stop shop for the instructions to set up Docker containers.
 
-**DOI**: https://zenodo.org/records/20371929
 
 ## High-level overview
 
