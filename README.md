@@ -24,8 +24,9 @@ You do **not** need to install Python, conda, MySQL, or any paper dependency —
 
 ## Prerequisites
 
-1. Install [Docker](https://docs.docker.com/get-docker/).
-2. Install `make` (available by default on Linux/macOS; on Windows use `choco install make` or run inside WSL).
+1. A computer with 160 GB disk space.
+2. Install [Docker](https://docs.docker.com/get-docker/).
+3. Install `make` (available by default on Linux/macOS; on Windows use `choco install make` or run inside WSL).
 
 You do **not** need a Docker Hub account or `docker login` — the published images are public. Note that sometimes you need to use sudo privilege to run `docker`, in that case you need to edit the `Makefile` accordingly.
 
