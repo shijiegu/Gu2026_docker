@@ -1,6 +1,6 @@
 # gucompaper_docker
 
-Instructions for running the **Gu, Liu, Gillespie et al., 2026** paper analysis notebooks in a Docker container, using pre-built images published to Docker Hub. The analysis [code](https://github.com/shijiegu/Gu2026), dependencies, and the machinery needed to pull data from the associated data in the cloud [Dandi Set](https://dandiarchive.org/dandiset/001836) are all packaged in the Docker image. Once you get the Docker running, everything is included. This is the one-stop shop for the instructions to set up Docker containers.
+Instructions for running the [**Gu, Liu, Gillespie et al., 2026**](https://www.biorxiv.org/content/10.64898/2026.05.26.727951v1) paper analysis notebooks in a Docker container, using pre-built images published to Docker Hub. The analysis [code](https://github.com/shijiegu/Gu2026), dependencies, and the machinery needed to pull data from the associated data in the cloud [Dandi Set](https://dandiarchive.org/dandiset/001836) are all packaged in the Docker image. Once you get the Docker running, everything is included. This is the one-stop shop for the instructions to set up Docker containers.
 
 **DOI**: https://zenodo.org/records/20371929
 
@@ -10,7 +10,7 @@ Instructions for running the **Gu, Liu, Gillespie et al., 2026** paper analysis 
 
 Two containers, started together via `docker compose`:
 
-- `collab_hub` — JupyterLab on host port **8888**, with the notebooks, the `gucompaper` source, and the full conda environment baked in.
+- `collab_hub` — JupyterLab on host port **8888**, with the notebooks, the `gucompaper` source, and the full conda environment baked in. The notebooks will call the relevent functions to stream data from the Dandi Set automatically. Some files from Rat E and J's data cannot be streamed from Dandi, but you should be able to run most notebooks to reproduce figures using the pickled data or use data from Dandi for rat M, K, and L. We will make sure all five subjects' data are streamable in the next build.
 - `collab_db` — MySQL on host port **3306**, pre-populated with the paper's exported database.
 
 Both images live on Docker Hub:
@@ -28,7 +28,7 @@ You do **not** need to install Python, conda, MySQL, or any paper dependency —
 1. Install [Docker](https://docs.docker.com/get-docker/).
 2. Install `make` (available by default on Linux/macOS; on Windows use `choco install make` or run inside WSL).
 
-You do **not** need a Docker Hub account or `docker login` — the published images are public.
+You do **not** need a Docker Hub account or `docker login` — the published images are public. Note that sometimes you need to use sudo privilege to run `docker`, in that case you need to edit the `Makefile` accordingly.
 
 ## Files you need
 All four are in this repo; just follow the **Step-by-step** below.
@@ -122,3 +122,4 @@ Common issues:
 | MySQL host port (from your laptop) | `localhost:3306` | Only if you want to connect to the db with an external MySQL client |
 
 All of these are stored in [.env](.env). Do **not** edit that file.
+
